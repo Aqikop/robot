@@ -1,0 +1,7 @@
+wall_time,result,planned_s,elapsed_s,max_err_rad,note
+2026-10-10 17:34:47,ABORTED,3.000,6.001,0.17959,did not settle within tolerance (err 0.1796 rad)
+2026-10-10 17:45:02,SUCCEEDED,3.000,3.701,0.01441,arrived and settled
+2026-10-10 17:46:33,SUCCEEDED,3.000,3.581,0.01490,arrived and settled
+2026-10-10 17:46:47,SUCCEEDED,3.000,3.701,0.01442,arrived and settled
+2026-10-10 17:46:57,ABORTED,0.000,0.000,0.50000,start state mismatch 0.500 rad > 0.100 (re-plan from the real state)
+2026-10-10 18:14:51,SUCCEEDED,2.527,4.560,0.00002,arrived and settled

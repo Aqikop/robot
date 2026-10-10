@@ -1,0 +1,11 @@
+unity/UC8-Simulation/Library/
+unity/UC8-Simulation/Temp/
+unity/UC8-Simulation/Obj/
+unity/UC8-Simulation/Logs/
+unity/UC8-Simulation/UserSettings/
+unity/UC8-Simulation/.vs/
+ros_ws/build/
+ros_ws/devel/
+ros_ws/install/
+ros_ws/logs/
+ros_ws/src/ROS-TCP-Endpoint/

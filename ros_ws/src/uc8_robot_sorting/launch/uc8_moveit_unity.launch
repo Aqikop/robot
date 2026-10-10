@@ -1,0 +1,27 @@
+<launch>
+  <arg name="use_rviz" default="true"/>
+  <arg name="debug" default="false"/>
+  <arg name="pipeline" default="ompl"/>
+
+  <!-- Unity publishes /joint_states. No joint_state_publisher here. -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen"/>
+
+  <include file="$(find ur10e_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="pipeline" value="$(arg pipeline)"/>
+    <arg name="load_robot_description" value="true"/>
+  </include>
+
+  <!-- Loaded after the include so our controller_list overrides the stock one -->
+  <rosparam file="$(find uc8_robot_sorting)/config/uc8_controllers.yaml" command="load" ns="move_group"/>
+  <!-- Unity droop is ~0.014 rad; the default 0.01 rad start check would reject moves -->
+  <param name="move_group/trajectory_execution/allowed_start_tolerance" value="0.05"/>
+
+  <include file="$(find ur10e_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
+    <arg name="config" value="$(find ur10e_moveit_config)/launch/moveit.rviz"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+</launch>
